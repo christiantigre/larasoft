@@ -1,3 +1,5 @@
+# LaraSoft
+**_Realizado sobre Laraadmin / Laravel 5.7 para Facturaciòn electrònica.
 # Laradminator
 **_[Laravel](https://laravel.com/) PHP Framework with [Adminator](https://github.com/puikinsh/Adminator-admin-dashboard)_**  as admin dash
 
