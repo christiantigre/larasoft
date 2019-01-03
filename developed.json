@@ -1,0 +1,48 @@
+Instalacion paquetes
+
+
+
+Shinobi Para Roles y Permisos
+1 composer require caffeinated/shinobi
+
+
+
+Icon utilizados 
+http://aalmiray.github.io/ikonli/cheat-sheet-themify.html
+
+
+
+Crud commands
+php artisan crud:generate Rol --fields_from_file="C:\Users\Christian\Dropbox\laradminator\public\fields\roles.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+php artisan crud:generate Test --fields_from_file="C:\Users\Christian\Dropbox\laradminator\public\fields\test.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+php artisan crud:generate Category --fields_from_file="C:\Users\Christian\Dropbox\laradminator\public\fields\category.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+php artisan crud:generate Permission --fields_from_file="C:\Users\Christian\Dropbox\laradminator\public\fields\permisos.json" --view-path=admin --controller-namespace=Admin --route-group=admin
+
+
+
+Make Seeders
+
+php artisan make:seed RolesTableSeeder
+php artisan make:seed PermisosTableSeeder
+
+Secuencia de rutas para permisos
+
+1-Navegar permisos
+permissions.index
+Lista y navega todos los permisos del sistema
+
+2-Ver detalle permiso
+permissions.show
+Ver el detalle de cada permiso del sistema
+
+3-Crear permiso
+permissions.create
+Crear permiso del sistema
+
+4-Edición de permiso
+permissions.edit
+Editar información de cualquier permiso del sistema
+
+5-Eliminar permiso
+permissions.delete
+Eliminar cualquier permiso del sistema

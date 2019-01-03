@@ -1,0 +1,27 @@
+{
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "slug",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        }
+    ],
+    
+    "validations": [
+        {
+            "field": "name",
+            "rules": "required|max:191"
+        },
+        {
+            "field": "slug",
+            "rules": "required|unique|max:191"
+        }
+    ]
+}

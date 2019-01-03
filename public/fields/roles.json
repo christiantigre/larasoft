@@ -1,0 +1,35 @@
+{
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "slug",
+            "type": "string"
+        },
+        {
+            "name": "description",
+            "type": "text"
+        },
+        {
+            "name": "special",
+            "type": "select",
+            "options": {
+                "all-access": "all-access",
+                "no-access": "no-access"
+            }
+        }
+    ],
+    
+    "validations": [
+        {
+            "field": "name",
+            "rules": "required|max:191"
+        },
+        {
+            "field": "slug",
+            "rules": "required|max:191"
+        }
+    ]
+}

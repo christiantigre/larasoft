@@ -15,5 +15,27 @@
 		
 				{!! Form::myTextArea('bio', 'Bio') !!}
 		</div>  
+	</div>	
+	<div class="col-sm-4">
+		<div class="bgc-white p-40 bd">
+		<h3>Roles</h3>
+		<hr>
+			<div class="form-group">
+			<ul class="list-unstyled">
+				@foreach($roles as $rol)
+					<li>
+						<label>
+							{{ Form::checkbox('roles[]', $rol->id, null) }}
+							{{ $rol->name }}
+							<em>
+								({{ $rol->description ?: 'Sin descripción' }})
+							</em>
+						</label>
+					</li>
+				@endforeach
+			</ul>
+			</div>
+		</div>
 	</div>
 </div>
+	

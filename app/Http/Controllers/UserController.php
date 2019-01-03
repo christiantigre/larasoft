@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Caffeinated\Shinobi\Models\Role;
 
 class UserController extends Controller
 {
@@ -27,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::get();
+
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -40,7 +43,8 @@ class UserController extends Controller
     {
         $this->validate($request, User::rules());
         
-        User::create($request->all());
+        $user =User::create($request->all());
+        $user->roles()->sync($request->get('roles'));
 
         return back()->withSuccess(trans('app.success_store'));
     }
@@ -53,7 +57,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = User::findOrFail($id);
+
+        return view('admin.users.show', compact('item'));
     }
 
     /**
@@ -64,9 +70,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $roles = Role::get();
         $item = User::findOrFail($id);
 
-        return view('admin.users.edit', compact('item'));
+        return view('admin.users.edit', compact('item','roles'));
     }
 
     /**
@@ -80,11 +87,15 @@ class UserController extends Controller
     {
         $this->validate($request, User::rules(true, $id));
 
-        $item = User::findOrFail($id);
+        // Update user
 
+        $item = User::findOrFail($id);
         $item->update($request->all());
 
-        return redirect()->route(ADMIN . '.users.index')->withSuccess(trans('app.success_update'));
+        // Update rol
+        $item->roles()->sync($request->get('roles'));
+
+        return redirect()->route('users.index')->withSuccess(trans('app.success_update'));
     }
 
     /**

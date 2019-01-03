@@ -1,0 +1,23 @@
+{
+    "fields": [
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "detall",
+            "type": "string"
+        },
+        {
+            "name": "active",
+            "type": "boolean"
+        }
+    ],
+    
+    "validations": [
+        {
+            "field": "name",
+            "rules": "required|unique|max:191"
+        }
+    ]
+}

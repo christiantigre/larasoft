@@ -14,9 +14,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!defined('ADMIN')) {
+        // define admin global
+        /*if (!defined('ADMIN')) {
            define('ADMIN', config('variables.APP_ADMIN', 'admin'));
-        }
+        }*/
         require_once base_path('resources/macros/form.php');
         Schema::defaultStringLength(191);
     }
@@ -28,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() == 'local') {
+            $this->app->register('Appzcoder\CrudGenerator\CrudGeneratorServiceProvider');
+        }
     }
 }

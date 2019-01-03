@@ -1,0 +1,32 @@
+
+@extends('admin.default')
+
+@section('page-header')
+    %%modelName%% <small>{{ trans('app.update_item') }}</small>
+@stop
+
+@section('content')
+
+<ul class="list-inline">
+        <li class="list-inline-item">
+    <a href="{{ route(ADMIN . '.%%viewName%%.index') }}" class="btn btn-warning btn-sm" title="{{ trans('app.view_button') }}">
+        <span class="ti-arrow-left"></span> 
+    </a>
+</li>
+</ul>
+
+    {!! Form::model($%%crudNameSingular%%, [
+            'action' => ['Admin\%%modelName%%Controller@update', $%%crudNameSingular%%->%%primaryKey%%],
+            'method' => 'put', 
+            'files' => true
+        ])
+    !!}
+
+    @include ('%%viewTemplateDir%%.form', ['formMode' => trans('app.update_item') ])
+
+        
+    {!! Form::close() !!}
+    
+@stop
+
+
